@@ -1,6 +1,6 @@
 package br.com.caelum.contas.modelo;
 
-public class Conta {
+public abstract class Conta {
 
 	private String titular;
 	private String agencia;
@@ -39,9 +39,16 @@ public class Conta {
 		this.saldo -= valor;
 	}
 	
-	public String getTipo() {
-		return "Conta";
+	public String recuperaDadosParaImpressao() {
+		String dados = "Titular: " + this.titular;
+		dados += "\nNúmero: " + this.numero;
+		dados += "\nAgência: " + this.agencia;
+		dados += "\nSaldo: R$" + this.saldo;
+		dados += "\nTipo: " + this.getTipo();
+		return dados;
 	}
+	
+	public abstract String getTipo();
 	
 	public void transfere(double valor, Conta conta) {
 		this.saca(valor);

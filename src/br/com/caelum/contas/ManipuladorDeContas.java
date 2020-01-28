@@ -16,7 +16,7 @@ public class ManipuladorDeContas {
 			} else if (tipo.equals("Conta Poupança")) {
 				this.conta = new ContaPoupanca();
 			}
-		this.conta.setTitular(evento.getString("Batman"));
+		this.conta.setTitular(evento.getString("titular"));
 		this.conta.setNumero(evento.getInt("numero"));
 		this.conta.setAgencia(evento.getString("titular"));
 	}

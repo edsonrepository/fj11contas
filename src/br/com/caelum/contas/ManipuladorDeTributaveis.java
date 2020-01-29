@@ -7,7 +7,7 @@ public class ManipuladorDeTributaveis {
 
 	private double total;
 	
-	public void CalculaImpostos(Evento evento) {
+	public void calculaImpostos(Evento evento) {
 		total = 0;
 		int tamanho = evento.getTamanhoDaLista("listaTributaveis");
 		for (int i = 0; i < tamanho; i++) {

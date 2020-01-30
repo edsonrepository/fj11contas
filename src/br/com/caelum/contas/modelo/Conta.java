@@ -23,8 +23,13 @@ public abstract class Conta {
 	public double getSaldo() {
 		return saldo;
 	}
+	
 	public void deposita(double valor) {
-		this.saldo += valor;
+		if (valor < 0) {
+			throw new IllegalArgumentException("Você tentou depositar um valor negativo");
+		} else {
+			this.saldo += valor;
+		}
 	}
 	
 	public void setTitular(String titular) {
@@ -55,4 +60,23 @@ public abstract class Conta {
 		conta.deposita(valor);
 	}
 	
+	@Override
+	public String toString() {
+		return "[titular=" + titular + ", numero=" + numero
+				+ ", agencia=" + agencia + "]";
+	}
+	
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		
+		Conta outraConta = (Conta) obj;
+		
+		return this.numero == outraConta.numero &&
+				this.agencia.equals(outraConta.agencia);
+	}
+	
+	//https://sergiotaborda.wordpress.com/desenvolvimento-de-software/java/excecoes-boas-praticas-mas-praticas/
+	//https://www.guj.com.br/t/resolvido-diferenca-entre-throwable-e-exeption-dentro-do-catch/79565/2
 }

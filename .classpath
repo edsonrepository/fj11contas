@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/oo8756/Documents/fj11-lib-contas.jar"/>
+	<classpathentry kind="lib" path="/home/oo8634/Downloads/fj11-lib-contas.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,6 +1,6 @@
 package br.com.caelum.contas.modelo;
 
-public abstract class Conta {
+public class Conta implements Comparable<Conta> {
 
 	private String titular;
 	private String agencia;
@@ -14,7 +14,7 @@ public abstract class Conta {
 		this.numero = numero;
 	}
 	public String getAgencia() {
-		return agencia;
+		return this.agencia;
 	}
 	public void setAgencia(String agencia) {
 		this.agencia = agencia;
@@ -53,7 +53,9 @@ public abstract class Conta {
 		return dados;
 	}
 	
-	public abstract String getTipo();
+	public String getTipo() {
+		return null;
+	}
 	
 	public void transfere(double valor, Conta conta) {
 		this.saca(valor);
@@ -62,21 +64,25 @@ public abstract class Conta {
 	
 	@Override
 	public String toString() {
-		return "[titular=" + titular + ", numero=" + numero
-				+ ", agencia=" + agencia + "]";
+		return "[titular=" + this.titular + ", numero=" + this.numero
+				+ ", agencia=" + this.agencia + "]";
 	}
 	
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		
-		Conta outraConta = (Conta) obj;
-		
-		return this.numero == outraConta.numero &&
-				this.agencia.equals(outraConta.agencia);
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((titular == null) ? 0 : titular.hashCode());
+		return result;
 	}
+	@Override
+	public int compareTo(Conta outraConta) {
+		return this.titular.compareTo(outraConta.titular);
+	}
+	
 	
 	//https://sergiotaborda.wordpress.com/desenvolvimento-de-software/java/excecoes-boas-praticas-mas-praticas/
 	//https://www.guj.com.br/t/resolvido-diferenca-entre-throwable-e-exeption-dentro-do-catch/79565/2
+	//Exercicio 15.15
+	
 }
